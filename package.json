@@ -1,0 +1,32 @@
+{
+  "name": "tiny-event-emitter",
+  "version": "0.0.1",
+  "description": "JavaScript tiny EventEmitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fullstackdb/eventEmitter.git"
+  },
+  "keywords": [
+    "event",
+    "emitter",
+    "javascript",
+    "event"
+  ],
+  "author": "fullstackdb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fullstackdb/eventEmitter/issues"
+  },
+  "homepage": "https://github.com/fullstackdb/eventEmitter#readme",
+  "engines": {
+    "node": ">=4.2.4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
