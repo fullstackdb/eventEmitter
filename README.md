@@ -1,20 +1,25 @@
-Number Formatter
+Tiny Event Emitter
 =========
 
-A small library that adds commas to numbers
+A small library that adds possibility to create custom events.
+
+Event system can make your Javascript Applications more flexible and your data flow more predictable.
 
 ## Installation
 
-  `npm install @jdaudier/number-formatter`
+  `npm install tiny-event-emitter`
 
 ## Usage
 
-    var numFormatter = require('@jdaudier/number-formatter');
+    var event = Event.default();
 
-    var formattedNum = numFormatter(35666);
-  
-  
-  Output should be `35,666`
+    // subscribe to event `try` and work with data
+    event.when('try', (data) => {
+        console.log('try', data);
+    })
+
+    // emit event `try` with some data that you want to work with
+    event.emit('try', { hasDone: true } )
 
 
 ## Tests

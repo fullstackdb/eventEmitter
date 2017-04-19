@@ -1,46 +1,43 @@
 'use strict';
 
 var expect = require('chai').expect;
-var numFormatter = require('../index');
+var event = require('../index');
 
-describe('#numFormatter', function() {
-    it('should convert single digits', function() {
-        var result = numFormatter(1);
-        expect(result).to.equal('1');
+describe('#tiny Event Emitter', function() {
+    it('should have emit method', function() {
+        expect(event.default().emit).to.exist;
     });
 
-    it('should convert double digits', function() {
-        var result = numFormatter(12);
-        expect(result).to.equal('12');
+    it('should have when method', function() {
+        expect(event.default().emit).to.exist;
     });
 
-    it('should convert triple digits', function() {
-        var result = numFormatter(123);
-        expect(result).to.equal('123');
+    it('should react to event', function(done) {
+        var localEvent = event.default();
+        localEvent.when('tryLocalEvent', function(data){
+            done();
+        })
+        localEvent.emit('tryLocalEvent', {hasDone: true})
     });
 
-    it('should convert 4 digits', function() {
-        var result = numFormatter(1234);
-        expect(result).to.equal('1,234');
+    it('should send data via event', function(done) {
+        var localEvent = event.default();
+        localEvent.when('trySomeEvent', function(data) {
+            if (data.hasDone) {
+                done();
+            }
+        })
+        localEvent.emit('trySomeEvent', {hasDone: true})
     });
 
-    it('should convert 5 digits', function() {
-        var result = numFormatter(12345);
-        expect(result).to.equal('12,345');
-    });
-
-    it('should convert 6 digits', function() {
-        var result = numFormatter(123456);
-        expect(result).to.equal('123,456');
-    });
-
-    it('should convert 7 digits', function() {
-        var result = numFormatter(1234567);
-        expect(result).to.equal('1,234,567');
-    });
-
-    it('should convert 8 digits', function() {
-        var result = numFormatter(12345678);
-        expect(result).to.equal('12,345,678');
+    it('fetched data should be equel to sended', function(done) {
+        var localEvent = event.default();
+        var someData = {hasDone: true};
+        localEvent.when('tryAnotherLocalEvent', function(data) {
+            if (data === someData) {
+                done();
+            }
+        })
+        localEvent.emit('tryAnotherLocalEvent', someData)
     });
 });
