@@ -5,6 +5,8 @@ A small library that adds possibility to create custom events.
 
 Event system can make your Javascript Applications more flexible and your data flow more predictable.
 
+[![Build Status](https://travis-ci.org/fullstackdb/eventEmitter.svg?branch=master)](https://travis-ci.org/fullstackdb/eventEmitter)
+
 ## Installation
 
   `npm install tiny-event-emitter`
